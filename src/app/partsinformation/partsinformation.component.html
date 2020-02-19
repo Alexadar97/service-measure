@@ -1,0 +1,212 @@
+<form [formGroup]="partsinformaiton">
+  <section class="vihcle-body">
+    <div class="container-fluid" style="background-color: #fff">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+          <section class="vehicle-info">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="head">Parts Arrangement Mode:</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Billable" name="billable"
+                    value="Billable" (click)="partvalue($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Billable" style="margin-top: -5px;">Billable
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12  col-md-10 col-lg-10 col-xl-10">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Foc" name="foc"
+                    value="Foc" (click)="partvalue($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Foc" style="margin-top: -5px;">Foc
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <h5 class="head">Part Cost Details</h5>
+
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+                  <label for="uploadFile" class="btn btn-primary1">
+                      <i class="fa fa-file" aria-hidden="true"></i> &nbsp;Bulk
+                  Upload</label>
+                    <i class="fa fa-refresh" (click)="cancleUploadsuppmaster()" *ngIf="Uploadsuppmasterfilename!=''"></i>
+                    <input type="file" id="uploadFile" #uploadFileid style="display: none" (change)="uploadfilesupp($event)" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+                    <!-- <p style="color:#444">{{Uploadsuppmasterfilename}}</p> -->
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="table-head">Row Lables</th>
+                      <th class="table-head">Count of VIN Number</th>
+                      <th class="table-head">Part Cost / Vehichle</th>
+                      <th class="table-head">Labor Cost / Hour</th>
+                      <th class="table-head">Labor Cost / Vehichle</th>
+                      <th class="table-head">Other Cost</th>
+                      <th class="table-head">Total Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="background:#D8D8D8"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                    </tr>
+                    <tr>
+                      <th class="table-head" style="padding: 10px !important;">Total Cost</th>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td><input class="vehicle-text" name="text" type="text"></td>
+                      <td style="background:#D8D8D8"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <h5 class="head">Cost Breakup for parts</h5>
+
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+                  <label for="uploadFile" class="btn btn-primary1">
+                      <i class="fa fa-file" aria-hidden="true"></i> &nbsp;Bulk
+                  Upload</label>
+                    <i class="fa fa-refresh" (click)="cancleUploadsuppmaster()" *ngIf="Uploadsuppmasterfilename!=''"></i>
+                    <input type="file" id="uploadFile" #uploadFileid style="display: none" (change)="uploadfilesupp($event)">
+                    <!-- <p style="color:#444">{{Uploadsuppmasterfilename}}</p> -->
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="overflow-x: auto;">
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="table-head">Sl.no</th>
+                      <th class="table-head">Part numbers</th>
+                      <th class="table-head">Part Description</th>
+                      <th class="table-head">Cost / Quantity</th>
+                      <th class="table-head">Quantity</th>
+                      <th class="table-head">Part Cost / Vehicle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container formArrayName="addItem" *ngFor="let addItem of addAllenv.controls; let i= index;">
+                      <ng-container [formGroupName]="i">
+                        <tr>
+                          <td style="padding:6px !important;">{{i+1}}</td>
+                          <td><input class="vehicle-text" name="text" type="text"></td>
+                          <td><input class="vehicle-text" name="text" type="text"></td>
+                          <td><input class="vehicle-text" name="text" type="text"></td>
+                          <td><input class="vehicle-text" name="text" type="text"></td>
+                          <td><input class="vehicle-text" name="text" type="text"></td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
+                <span class="label label-default interactive" style="margin-left: 10px;cursor:pointer"
+                  (click)="addEnv()">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> Add More
+                </span>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="head">Field Parts Disposal</h5>
+                <h5 class="head mt-4">Replaced Parts</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Scrap" name="Scrap"
+                    value="Scrap" (click)="replacepart($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Scrap" style="margin-top: -5px;">Scrap
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12  col-md-10 col-lg-10 col-xl-10">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Back" name="DICV"
+                    value="Back to DICV" (click)="replacepart($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Back" style="margin-top: -5px;">Back to DICV
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="head">Parts in Stock</h5>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                <h5 class="head">Dealer</h5>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="Quarantine" name="QuarantineScrap"
+                    value="something2">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Quarantine" style="margin-top: -5px;">Quarantine / Scrap
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="Dicv" name="Quarantine"
+                    value="something2">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Dicv" style="margin-top: -5px;">Quarantine & Back to Dicv
+                  </label>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                <h5 class="head">Dealer</h5>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="Quarant" name="vehicle2"
+                    value="something2">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Quarant" style="margin-top: -5px;">Quarantine / Scrap
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="send" name="vehicle2"
+                    value="something2">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="send" style="margin-top: -5px;">Quarantine & send back to supplier 
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-2"></div>
+          </section>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <button class="btn btn-primary mb-4" routerLink="../../../cost">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

@@ -1,0 +1,145 @@
+<section class="vihcle-body">
+  <div class="container-fluid" style="background-color: #fff">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+        <section class="vehicle-info">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <h5 class="head">Affected Markets</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+              <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input" id="Domestic" name="Domestic"
+                  value="Domestic" (click)="marketvalues($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Domestic"
+                  style="margin-top: -5px;">Domestic
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12  col-md-7 col-lg-7 col-xl-7">
+              <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input" id="Export" name="Export" value="Export" (click)="marketvalues($event.target.value)">&nbsp;&nbsp;&nbsp;<label
+                  class="form-check-label" for="Export" style="margin-top: -5px;">Export
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <h5 class="head">Affected Countries</h5>
+              <div class="select-offected">
+              <ng-multiselect-dropdown [placeholder]="'Select Affected Countries'" [data]="dropdownList"
+                [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+            </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <h5 class="head">Service Measure Type</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+              <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input" id="PDI" name="PDI" value="PDI" (click)="measurevlaues($event.target.value)">&nbsp;&nbsp;&nbsp;<label
+                  class="form-check-label" for="PDI" style="margin-top: -5px;">PDI
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-5">
+              <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input" id="Incoming" name="Incoming"
+                  value="Incoming" (click)="measurevlaues($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Incoming"
+                  style="margin-top: -5px;">Incoming
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input" name="Informed"
+                  value="Informed" id="Informed" (click)="measurevlaues($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="Informed"
+                  style="margin-top: -5px;">Informed
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-7"></div>
+    </div>
+    <form [formGroup]="marketform">
+      <section class="vehicle-info1">
+        <div class="row mt-2">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <hr>
+            <h5 class="head mt-4">Problem Description</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h5 class="head">Issue</h5>
+            <textarea class="vehicle-textarea" formControlName="issue"></textarea>
+            <small class="text-danger errormsg"
+              *ngIf="!marketform.controls.issue.valid && marketform.controls.issue.touched">Issue is
+              required</small><br>
+
+            <label for="uploadFile" class="btn btn-success1">Upload Image</label>
+            <i class="fa fa-refresh" (click)="cancleUploadsuppmaster()" *ngIf="Uploadsuppmasterfilename!=''" style="padding: 0px 0px 0px 8px;cursor: pointer;"></i>
+            <input type="file" id="uploadFile" #uploadFileid style="display: none" (change)="uploadfilesupp($event)" formControlName="fileupload">
+            <p style="color:#444">{{Uploadsuppmasterfilename}}</p>
+            <small class="text-danger errormsg"
+            *ngIf="!marketform.controls.fileupload.valid && marketform.controls.fileupload.touched">FileUpload
+            is required</small>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h5 class="head">Analysis & Root Cause</h5>
+            <textarea class="vehicle-textarea" formControlName="analysis"></textarea>
+            <small class="text-danger errormsg"
+              *ngIf="!marketform.controls.analysis.valid && marketform.controls.analysis.touched">Analysis & Root Cause
+              is required</small>
+
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h5 class="head">Series Solutions</h5>
+            <textarea class="vehicle-textarea" formControlName="series"></textarea>
+            <small class="text-danger errormsg"
+              *ngIf="!marketform.controls.series.valid && marketform.controls.series.touched">Series Solutions is
+              required</small>
+
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h5 class="head">Plant yard Solution</h5>
+            <textarea class="vehicle-textarea" formControlName="plant"></textarea>
+            <small class="text-danger errormsg"
+              *ngIf="!marketform.controls.plant.valid && marketform.controls.plant.touched">Plant yard Solution is
+              required</small>
+
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h5 class="head">Field Solutions</h5>
+            <textarea class="vehicle-textarea" formControlName="field"></textarea>
+            <small class="text-danger errormsg"
+              *ngIf="!marketform.controls.field.valid && marketform.controls.field.touched">Field Solutions is
+              required</small>
+
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </section>
+    </form>
+    <div class="row mt-4">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+        <button class="btn btn-primary mb-4" (click)="nextsubmit()">Next</button>
+      </div>
+    </div>
+  </div>
+</section>
+

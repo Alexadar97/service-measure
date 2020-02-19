@@ -1,0 +1,56 @@
+<section class="vihcle-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-x-l2 text-right">
+              <button class="btn btn-success  mr-4" routerLink="../approver">Back</button>
+            </div>
+          </div>
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <table class="table">
+         <div class="row">
+           <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <h5 class="head mt-2">Service Measure Requests</h5>
+           </div>
+           <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="input-group">
+                  <input class="form-control py-2" type="search" id="example-search-input">
+                  <span class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+            </div>
+            </div>
+         </div>
+         <div class="row">
+         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center" style="overflow-x: auto;">
+         <table class="table mt-2">
+           <thead style="background: #97979782;">
+           <tr>
+             <th class="text-center">S.No</th>
+             <th class="text-center">Service Request No.</th>
+             <th class="text-center">Requested Date</th>
+           </tr>
+           </thead>
+           <tbody style="background: #fff;">
+              <ng-container *ngFor="let data of requestlist; let i=index">
+                  <tr>
+                    <td>{{i+1}}</td>
+                    <td>{{data?.value}}</td>
+                    <td>{{data?.date}}</td>
+                  </tr>
+                </ng-container>
+           </tbody>
+         </table>
+        </div>
+      </div>
+    </table>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,49 @@
+table,th,td{
+    border:1px solid #979797;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: none;
+}
+td,th {
+    text-align: center;
+}
+span.label.label-default.interactive {
+    background: #D8D8D8;
+    border: 1px solid #979797;
+    padding: 2px 8px 2px 8px;
+    font-size: 13px;
+}
+span.label.label-default.interactive:hover{
+    background: #05252d;
+    color:#fff;
+}
+label.btn.btn-primary1 {
+    background: #144C5B;
+    border-radius: 2px;
+    padding: 4px 10px 4px 10px;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    cursor:pointer;
+}
+label.btn.btn-primary1:hover{
+    background: #05252d;
+    color:#fff;
+}
+table,th,td{
+    border:1px solid #979797;
+    padding: 0px !important;
+}
+input.vehicle-text {
+    width: 100%;
+    height: 37px;
+    border: none;
+    padding: 0px 0px 0px 6px;
+}
+th.table-head {
+    width: 12%;
+    font-size: 11px;
+    text-align: center;
+   
+}

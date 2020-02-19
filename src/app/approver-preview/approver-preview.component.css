@@ -1,0 +1,78 @@
+section.vihcle-body {
+    padding: 73px 46px 32px 46px;
+}
+td{
+    height: 35px;
+}
+button.btn.btn-danger.mb-4 {
+    background: #EA2139;
+    border-radius: 2px;
+    padding:3px 23px 3px 23px;
+    font-size: 15px;
+}
+button.btn.btn-danger.mb-4:hover{
+    background: #b50515;
+}
+button.btn.btn-primary {
+    background: #144C5B;
+    border-radius: 2px;
+    padding: 4px 20px 4px 20px;
+    border: none;
+    font-size: 15px;
+}
+button.btn.btn-primary:hover{
+    background: #05252d;
+    color:#fff;
+}
+h4.head {
+    font-size: 15px;
+}
+h5.head {
+    font-size: 20px;
+}
+p.para{
+    font-family: Roboto;
+    font-size: 15px;
+    color: #7B7B7B;
+}
+table,th,td{
+    border:1px solid #979797;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: none;
+}
+button.btn.btn-success1 {
+    background: #D8D8D8;
+    border: 1px solid #979797;
+    border-radius: 3px;
+    color: #202020;
+    padding: 7px 11px 7px 11px;
+    background-color: #D8D8D8;
+    font-size: 11px;
+}
+button.btn.btn-success1:hover{
+    background: #05252d;
+    color:#fff;
+}
+th.vehile-th.text-center {
+    font-size: 13px;
+}
+button.btn.btn-sm {
+    background: #144c5b;
+    color: #fff;
+}
+button.btn.btn-sm:hover {
+    background: #05252d;
+    color: #fff;
+}
+.modal-content{
+    width:150%;
+    margin-left: -7%;
+}
+@media (max-width:846px){
+    .modal-content{
+        width: 100%;
+        margin-left: 0%;
+    }
+}

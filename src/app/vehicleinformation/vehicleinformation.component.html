@@ -1,0 +1,104 @@
+<form [formGroup]="vehicleform">
+  <section class="vihcle-body">
+    <div class="container-fluid" style="background-color: #fff">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+          <section class="vehicle-info">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="head">Select Priority</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="R" formControlName="select" name="R" value="R" (click)="priority($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="R" style="margin-top: -5px;">R
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="A" formControlName="select" name="A" value="A" (click)="priority($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="A" style="margin-top: -5px;">A
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="B" formControlName="select" name="B" value="B" (click)="priority($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="B" style="margin-top: -5px;">B
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="form-check-inline">
+                  <input type="checkbox" class="form-check-input" id="C" formControlName="select" name="C" value="C" (click)="priority($event.target.value)">&nbsp;&nbsp;&nbsp;<label class="form-check-label" for="C" style="margin-top: -5px;">C
+                  </label>
+                  <small class="text-danger errormsg"
+                  *ngIf="!vehicleform.controls.select.valid && vehicleform.controls.touched">Select Atlest One Checkbox </small>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="head">Number of affected vehicles</h5>
+                <section class="search-card mt-3">
+                  <form class="example mt-2">
+                    <input class="vehclee-search" #numbervalues
+                    type="text" name="search2">
+                    <button class="vehicle-submit ml-1" type="submit"  (click)="addRow(numbervalues.value)">Go</button>
+                  </form>
+                </section>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="vehile-th text-center" style="width: 50%;">VIN</th>
+                      <th class="vehile-th text-center">Engine Number</th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="vehicleaddrow" *ngFor="let data of vehicledetails.controls; let i=index">
+                        <tr>
+                            <td><input class="vehicle-text" name="text" type="text"></td>
+                            <td><input class="vehicle-text" name="text" type="text"></td>
+                          </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-x-10">
+                <h5 class="head">Reason</h5>
+                <textarea class="vehicle-textarea" formControlName="reason"></textarea>
+                <small class="text-danger errormsg"
+                  *ngIf="!vehicleform.controls.reason.valid && vehicleform.controls.reason.touched">Reason is
+                  required</small>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-x-10">
+                <h5 class="head">Validity</h5>
+                <input class="vehicle-text" name="text" type="text" style="border: 1px solid rgb(169, 169, 169);"
+                  formControlName="validity">
+                <small class="text-danger errormsg"
+                  *ngIf="!vehicleform.controls.validity.valid && vehicleform.controls.validity.touched">Validity is
+                  required</small>
+
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-9"></div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <button class="btn btn-primary mb-4" (click)="vechicleinfo()">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
